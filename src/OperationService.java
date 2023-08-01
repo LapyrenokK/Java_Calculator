@@ -6,7 +6,7 @@ import java.util.List;
 
 public class OperationService {
 
-    private final OperationStorage storage = new FileOperationStorage();
+    private final OperationStorage storage = new ArrayOperationStorage();
 
     public Operation calculate(Operation operation) {
 
