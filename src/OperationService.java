@@ -1,4 +1,9 @@
+import OperationStorages.ArrayOperationStorage;
+import OperationStorages.FileOperationStorage;
+import OperationStorages.Operation;
+import OperationStorages.OperationStorage;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -6,29 +11,30 @@ import java.util.List;
 
 public class OperationService {
 
-    private final OperationStorage storage = new ArrayOperationStorage();
+    private final OperationStorage storage = new FileOperationStorage();
+
 
     public Operation calculate(Operation operation) {
 
         switch (operation.getType()) {
             case "+":
                 operation.setResult(operation.getNum1() + operation.getNum2());
-                operation.setDate(LocalDateTime.now());
+                operation.setDate(LocalDate.now());
                 storage.save(operation);
                 return operation;
             case "-":
                 operation.setResult(operation.getNum1() - operation.getNum2());
-                operation.setDate(LocalDateTime.now());
+                operation.setDate(LocalDate.now());
                 storage.save(operation);
                 return operation;
             case "*":
                 operation.setResult(operation.getNum1() * operation.getNum2());
-                operation.setDate(LocalDateTime.now());
+                operation.setDate(LocalDate.now());
                 storage.save(operation);
                 return operation;
             case "/":
                 operation.setResult(operation.getNum1() / operation.getNum2());
-                operation.setDate(LocalDateTime.now());
+                operation.setDate(LocalDate.now());
                 storage.save(operation);
                 return operation;
         }
