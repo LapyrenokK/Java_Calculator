@@ -1,13 +1,11 @@
-package OperationStorages;
+package Operations;
 
 import java.time.LocalDate;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class Operation {
-    double num1,num2,result;
-    String type;
-    LocalDate date;
+    private double num1,num2,result;
+    private String type;
+    private LocalDate date;
 
     public Operation(double num1, double num2, String type) {
         this.num1 = num1;

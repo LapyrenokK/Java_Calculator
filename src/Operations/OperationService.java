@@ -1,10 +1,9 @@
-import OperationStorages.ArrayOperationStorage;
-import OperationStorages.FileOperationStorage;
-import OperationStorages.Operation;
-import OperationStorages.OperationStorage;
+package Operations;
 
+import Registrations.Users;
+
+import java.io.File;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,36 +12,44 @@ public class OperationService {
 
     private final OperationStorage storage = new FileOperationStorage();
 
+    File file;
 
-    public Operation calculate(Operation operation) {
+
+
+
+    public Operation calculate(Operation operation, Users users) {
 
         switch (operation.getType()) {
             case "+":
                 operation.setResult(operation.getNum1() + operation.getNum2());
                 operation.setDate(LocalDate.now());
-                storage.save(operation);
+                file = new File("res/UsersHistory/"+users.getUserName()+".txt");
+                storage.save(operation,file);
                 return operation;
             case "-":
                 operation.setResult(operation.getNum1() - operation.getNum2());
                 operation.setDate(LocalDate.now());
-                storage.save(operation);
+                file = new File("res/UsersHistory/"+users.getUserName()+".txt");
+                storage.save(operation,file);
                 return operation;
             case "*":
                 operation.setResult(operation.getNum1() * operation.getNum2());
                 operation.setDate(LocalDate.now());
-                storage.save(operation);
+                file = new File("res/UsersHistory/"+users.getUserName()+".txt");
+                storage.save(operation,file);
                 return operation;
             case "/":
                 operation.setResult(operation.getNum1() / operation.getNum2());
                 operation.setDate(LocalDate.now());
-                storage.save(operation);
+                file = new File("res/UsersHistory/"+users.getUserName()+".txt");
+                storage.save(operation,file);
                 return operation;
         }
         return null;
     }
 
     public List<String> getHistory() {
-        List<Operation> all = storage.findAll();
+        List<Operation> all = storage.findAll(file);
         List<String> result = new ArrayList<>();
         for (Operation op : all) {
             result.add("Result [" +

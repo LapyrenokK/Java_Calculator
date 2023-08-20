@@ -8,12 +8,17 @@ public class ConsoleReader implements Reader {
 
 
     @Override
-    public double readNum() {
+    public double readDouble() {
         return scanner.nextDouble();
     }
 
     @Override
-    public String readType() {
+    public String readString() {
         return scanner.next();
+    }
+
+    @Override
+    public int readInteger() {
+        return scanner.nextInt();
     }
 }

@@ -1,7 +1,9 @@
 package Readers;
 
 public interface Reader {
-    double readNum();
-    String readType();
+    double readDouble();
+    String readString();
+
+    int readInteger();
 
 }
